@@ -1,5 +1,5 @@
 public class Database {
-    
+
     private static Database databaseInstance;
 
     private Database() {
