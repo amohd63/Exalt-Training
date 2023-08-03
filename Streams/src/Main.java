@@ -21,6 +21,9 @@ public class Main {
         });
         System.out.println("********************\n");
 
+        /*
+         * Users without books
+         */
         System.out.println("Users without books:");
         List<User> usersWithoutSpecificBook = database.entrySet().stream()
                 .filter(entry -> entry.getValue() == null)
@@ -32,19 +35,48 @@ public class Main {
         });
         System.out.println("********************\n");
 
-        Book specificBook = new Book("1234A", "Ahmad Majed", "Java", "For beginners", 26);
-        System.out.println("Users with book: " + specificBook.toString());
-
-        List<User> usersWithSpecificBook = database.entrySet().stream()
+        /*
+         * Users with number of books
+         */
+        System.out.println("Users with number of books:");
+        Map<User, Integer> userBookCountMap = database.entrySet().stream()
                 .filter(entry -> entry.getValue() != null)
-                .filter(e ->
-                        e.getValue().stream().filter(book ->
-                            book.equals(specificBook)
-                        ).isParallel()
-                )
-                .map(Map.Entry::getKey)
-                .collect(Collectors.toList());
+                .collect(Collectors.toMap(Map.Entry::getKey, e -> (Integer) e.getValue().size()));
+
+        userBookCountMap.forEach((user, number) -> {
+            System.out.println(user.getFirstName() + " " + user.getLastName() + " - " + number);
+        });
+
         System.out.println("********************\n");
+
+        /*
+         * Users with number of books >= 2
+         */
+
+        System.out.println("Users with number of books >= 2:");
+        Map<User, Integer> userBookCountGreaterThanTwo = database.entrySet().stream()
+                .filter(entry -> entry.getValue() != null)
+                .collect(Collectors.toMap(Map.Entry::getKey, e -> (Integer) e.getValue().size()));
+
+        userBookCountMap.forEach((user, number) -> {
+            System.out.println(user.getFirstName() + " " + user.getLastName() + " - " + number);
+        });
+
+        System.out.println("********************\n");
+
+        boolean anyUserHasMoreThanFiveBooks = database.values().stream()
+
+
+
+//        Book specificBook = new Book("1234A", "Ahmad Majed", "Java", "For beginners", 26);
+//        System.out.println("Users with book: " + specificBook.toString());
+//
+//        List<User> usersWithSpecificBook = database.entrySet().stream()
+//                .filter(entry -> entry.getValue() != null)
+//                .filter(entry -> entry.getValue().contains(specificBook))
+//                .map(Map.Entry::getKey)
+//                .collect(Collectors.toList());
+//        System.out.println("********************\n");
     }
 
     /*
