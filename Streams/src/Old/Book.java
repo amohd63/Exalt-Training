@@ -1,3 +1,5 @@
+package Old;
+
 public class Book {
     private String serial;
     private String author;
@@ -58,7 +60,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
+        return "Old.Book{" +
                 "author='" + author + '\'' +
                 ", title='" + title + '\'' +
                 ", price=" + price +
