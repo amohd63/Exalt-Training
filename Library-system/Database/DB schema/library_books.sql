@@ -30,6 +30,11 @@ CREATE TABLE `books` (
   `author` varchar(100) NOT NULL,
   `availableCopies` int NOT NULL,
   `totalCopies` int NOT NULL,
+  `serial_number` varchar(255) NOT NULL,
+  `available_copies` int DEFAULT NULL,
+  `book_name` varchar(255) DEFAULT NULL,
+  `num_of_pages` int DEFAULT NULL,
+  `total_copies` int DEFAULT NULL,
   PRIMARY KEY (`serialNumber`),
   UNIQUE KEY `serialNumber` (`serialNumber`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -41,7 +46,7 @@ CREATE TABLE `books` (
 
 LOCK TABLES `books` WRITE;
 /*!40000 ALTER TABLE `books` DISABLE KEYS */;
-INSERT INTO `books` VALUES ('SN123','The Great Novel',300,'NOVEL','Author A',5,10),('SN456','Science Explained',250,'SCIENCE','Author B',3,5),('SN789','Fiction Adventures',400,'FICTION','Author C',7,7);
+INSERT INTO `books` VALUES ('SN123','The Great Novel',300,'NOVEL','Author A',5,10,'',NULL,NULL,NULL,NULL),('SN456','Science Explained',250,'SCIENCE','Author B',3,5,'',NULL,NULL,NULL,NULL),('SN789','Fiction Adventures',400,'FICTION','Author C',7,7,'',NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `books` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-09 14:25:25
+-- Dump completed on 2023-08-09 16:40:48

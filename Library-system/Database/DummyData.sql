@@ -1,5 +1,5 @@
 -- Inserting dummy data into Users table
-INSERT INTO Users (userID, userName, userPassword, firstName, lastName)
+INSERT INTO Users (userID, user_name, user_password, first_name, last_name)
 VALUES
     (1, 'user1', 'password1', 'John', 'Doe'),
     (2, 'user2', 'password2', 'Jane', 'Smith'),

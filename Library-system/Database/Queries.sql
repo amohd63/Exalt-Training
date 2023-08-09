@@ -19,3 +19,8 @@ SELECT U.userID, U.userName
 FROM Users U
 LEFT JOIN Subscription S ON U.userID = S.userID
 WHERE CURDATE() > S.endDate;
+
+SELECT *
+FROM users;
+
+SET FOREIGN_KEY_CHECKS=0; -- to disable them

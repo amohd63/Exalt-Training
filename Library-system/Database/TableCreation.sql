@@ -2,10 +2,10 @@ drop table Users, Books, Borrow, Subscription;
 -- User table
 CREATE TABLE Users (
     userID INT PRIMARY KEY,
-    userName VARCHAR(50) NOT NULL UNIQUE,
-    userPassword VARCHAR(100) NOT NULL,
-    firstName VARCHAR(50) NOT NULL,
-    lastName VARCHAR(50) NOT NULL
+    user_name VARCHAR(50) NOT NULL UNIQUE,
+    user_password VARCHAR(100) NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL
 );
 
 -- Book table
@@ -24,7 +24,7 @@ CREATE TABLE Subscription (
     userID INT,
     startDate DATE NOT NULL,
     endDate DATE NOT NULL,
-    FOREIGN KEY (userID) REFERENCES Users(userID)
+    FOREIGN KEY (userID) REFERENCES Users(userID) ON DELETE CASCADE
 );
 
 -- Borrowed Books table
@@ -34,6 +34,6 @@ CREATE TABLE Borrow (
     serialNumber VARCHAR(20),
     borrowDate DATE NOT NULL,
     dueDate DATE NOT NULL,
-    FOREIGN KEY (userID) REFERENCES Users(userID),
-    FOREIGN KEY (serialNumber) REFERENCES Books(serialNumber)
+    FOREIGN KEY (userID) REFERENCES Users(userID) ON DELETE CASCADE,
+    FOREIGN KEY (serialNumber) REFERENCES Books(serialNumber) ON DELETE CASCADE
 );

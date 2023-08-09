@@ -24,12 +24,12 @@ DROP TABLE IF EXISTS `users`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
   `userID` int NOT NULL,
-  `userName` varchar(50) NOT NULL,
-  `userPassword` varchar(100) NOT NULL,
-  `firstName` varchar(50) NOT NULL,
-  `lastName` varchar(50) NOT NULL,
+  `user_name` varchar(50) NOT NULL,
+  `user_password` varchar(100) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
   PRIMARY KEY (`userID`),
-  UNIQUE KEY `userName` (`userName`)
+  UNIQUE KEY `user_name` (`user_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -39,7 +39,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'user1','password1','John','Doe'),(2,'user2','password2','Jane','Smith'),(3,'user3','password3','Michael','Johnson');
+INSERT INTO `users` VALUES (1,'user1','password1','John','Doe'),(2,'user2','password2','Jane','Smith'),(3,'user3','password3','Michael','Johnson'),(4,'user4','password1','John','Doe');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-09 14:25:25
+-- Dump completed on 2023-08-09 16:40:49

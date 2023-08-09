@@ -13,7 +13,7 @@ public class User {
     private String userName;
 
     @Column(name = "userPassword")
-    private String password;
+    private String userPassword;
 
     @Column(name = "firstName")
     private String firstName;
@@ -30,7 +30,7 @@ public class User {
         super();
         this.userID = userID;
         this.userName = userName;
-        this.password = password;
+        this.userPassword = password;
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -67,12 +67,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserPassword(String password) {
+        this.userPassword = password;
     }
 
     @Override
