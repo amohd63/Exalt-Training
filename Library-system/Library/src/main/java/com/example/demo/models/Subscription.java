@@ -13,7 +13,6 @@ import javax.persistence.Table;
 @Table(name = "subscription")
 public class Subscription {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column (name="subscriptionID")
     private Integer subscriptionID;
 	
@@ -31,6 +30,9 @@ public class Subscription {
         this.userID = userID;
         this.startDate = startDate;
         this.endDate = endDate;
+    }
+    
+    public Subscription() {
     }
 
     public Integer getSubscriptionID() {

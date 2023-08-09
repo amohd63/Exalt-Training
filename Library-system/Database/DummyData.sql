@@ -13,7 +13,7 @@ VALUES
     ('SN789', 'Fiction Adventures', 400, 'FICTION', 'Author C', 7, 7);
 
 -- Inserting dummy data into Subscription table
-INSERT INTO Subscription (subscriptionID, userID, startDate, endDate)
+INSERT INTO Subscription (subscriptionID, userID, start_date, end_date)
 VALUES
     (1, 1, '2023-01-01', '2023-12-31'),
     (2, 2, '2023-02-15', '2023-08-15'),

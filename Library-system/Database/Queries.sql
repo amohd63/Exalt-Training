@@ -15,12 +15,15 @@ SET dueDate = DATE_ADD(dueDate, INTERVAL 7 DAY)
 WHERE borrowID = 2;
 
 /*List users whose subscriptions have expired:*/
-SELECT U.userID, U.userName
+SELECT U.userID, U.user_name
 FROM Users U
 LEFT JOIN Subscription S ON U.userID = S.userID
 WHERE CURDATE() > S.endDate;
 
 SELECT *
 FROM users;
+
+SELECT *
+FROM Subscription;
 
 SET FOREIGN_KEY_CHECKS=0; -- to disable them

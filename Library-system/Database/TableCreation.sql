@@ -22,8 +22,8 @@ CREATE TABLE Books (
 CREATE TABLE Subscription (
 	subscriptionID INT PRIMARY KEY,
     userID INT,
-    startDate DATE NOT NULL,
-    endDate DATE NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
     FOREIGN KEY (userID) REFERENCES Users(userID) ON DELETE CASCADE
 );
 

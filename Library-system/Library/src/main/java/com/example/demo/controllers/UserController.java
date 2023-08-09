@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.models.User;
 import com.example.demo.models.Book;
+import com.example.demo.models.Subscription;
 import com.example.demo.services.UserService;
 
 @RestController
@@ -42,5 +43,10 @@ public class UserController {
 	@PostMapping("/users")
 	public String addOne(@RequestBody User user) {
 		return service.addUser(user);
+	}
+	
+	@PostMapping("/subscribe")
+	public String subscribe(@RequestBody Subscription subscription) {
+		return service.subscribe(subscription);
 	}
 }

@@ -6,19 +6,19 @@ import javax.persistence.*;
 @Table(name = "users")
 public class User {
     @Id
-    @Column(name = "userID")
+    //@Column(name = "userID")
     private Integer userID;
 
-    @Column(name = "userName")
+    //@Column(name = "userName")
     private String userName;
 
-    @Column(name = "userPassword")
+    //@Column(name = "userPassword")
     private String userPassword;
 
-    @Column(name = "firstName")
+    //@Column(name = "firstName")
     private String firstName;
 
-    @Column(name = "lastName")
+    //@Column(name = "lastName")
     private String lastName;
 
     public User() {
