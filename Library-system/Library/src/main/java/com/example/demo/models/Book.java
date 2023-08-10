@@ -1,33 +1,31 @@
 package com.example.demo.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "books")
 public class Book {
 	@Id
-	@Column (name="serialNumber")
+	//@Column (name="serialNumber")
     private String serialNumber;
 	
-	@Column (name="bookName")
+	//@Column (name="bookName")
     private String name;
 	
-	@Column (name="numOfPages")
+	//@Column (name="numOfPages")
     private int numOfPages;
 	
-	@Column (name="genre")
+	//@Column (name="genre")
+    @Enumerated(EnumType.STRING)
     private Genre genre;
 	
-	@Column (name="author")
+	//@Column (name="author")
     private String author;
 	
-	@Column (name="availableCopies")
+	//@Column (name="availableCopies")
     private int availableCopies;
 	
-	@Column (name="totalCopies")
+	//@Column (name="totalCopies")
     private int totalCopies;
 
     public Book() {
@@ -35,12 +33,12 @@ public class Book {
 // TODO Auto-generated constructor stub	
     }
 
-    public Book(String serialNumber, String name, int numOfPages, Genre genre, String author, int availableCopies, int totalCopies) {
+    public Book(String serialNumber, String name, int numOfPages, String genre, String author, int availableCopies, int totalCopies) {
         super();
         this.serialNumber = serialNumber;
         this.name = name;
         this.numOfPages = numOfPages;
-        this.genre = genre;
+        this.genre = Genre.valueOf(genre);
         this.author = author;
         this.availableCopies = availableCopies;
         this.totalCopies = totalCopies;
@@ -70,12 +68,12 @@ public class Book {
         this.serialNumber = serialNumber;
     }
 
-    public Genre getGenre() {
-        return genre;
+    public String getGenre() {
+        return genre.name();
     }
 
-    public void setGenre(Genre genre) {
-        this.genre = genre;
+    public void setGenre(String genre) {
+        this.genre = Genre.valueOf(genre);
     }
 
     public String getAuthor() {

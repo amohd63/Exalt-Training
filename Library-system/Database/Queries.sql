@@ -26,4 +26,13 @@ FROM users;
 SELECT *
 FROM Subscription;
 
+SELECT *
+FROM Books;
+
+SELECT *
+FROM borrow;
+
+INSERT INTO users (user_name, user_password, first_name, last_name) 
+VALUES ('user5', 'password5', 'Ali', 'Mohammed');
+
 SET FOREIGN_KEY_CHECKS=0; -- to disable them

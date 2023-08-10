@@ -6,7 +6,7 @@ VALUES
     (3, 'user3', 'password3', 'Michael', 'Johnson');
 
 -- Inserting dummy data into Books table
-INSERT INTO Books (serialNumber, bookName, numOfPages, genre, author, availableCopies, totalCopies)
+INSERT INTO Books (serial_number, name, num_of_pages, genre, author, available_copies, total_copies)
 VALUES
     ('SN123', 'The Great Novel', 300, 'NOVEL', 'Author A', 5, 10),
     ('SN456', 'Science Explained', 250, 'SCIENCE', 'Author B', 3, 5),
@@ -20,7 +20,7 @@ VALUES
     (3, 3, '2022-03-10', '2022-09-10');
 
 -- Inserting dummy data into Borrow table
-INSERT INTO Borrow (borrowID, userID, serialNumber, borrowDate, dueDate)
+INSERT INTO Borrow (borrowID, userID, serial_number, borrow_date, due_date)
 VALUES
     (1, 1, 'SN123', '2023-04-01', '2023-04-08'),
     (2, 2, 'SN456', '2023-05-10', '2023-05-17'),
