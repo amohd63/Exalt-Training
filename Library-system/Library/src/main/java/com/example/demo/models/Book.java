@@ -5,27 +5,27 @@ import javax.persistence.*;
 @Entity
 @Table(name = "books")
 public class Book {
-	@Id
-	//@Column (name="serialNumber")
+    @Id
+    @Column(name = "serial_number")
     private String serialNumber;
-	
-	//@Column (name="bookName")
+
+    @Column(name = "name")
     private String name;
-	
-	//@Column (name="numOfPages")
+
+    @Column(name = "num_of_pages")
     private int numOfPages;
-	
-	//@Column (name="genre")
+
+    @Column(name = "genre")
     @Enumerated(EnumType.STRING)
     private Genre genre;
-	
-	//@Column (name="author")
+
+    @Column(name = "author")
     private String author;
-	
-	//@Column (name="availableCopies")
+
+    @Column(name = "available_copies")
     private int availableCopies;
-	
-	//@Column (name="totalCopies")
+
+    @Column(name = "total_copies")
     private int totalCopies;
 
     public Book() {

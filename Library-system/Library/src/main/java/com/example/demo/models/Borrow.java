@@ -1,6 +1,7 @@
 package com.example.demo.models;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,30 +13,34 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "borrow")
 public class Borrow {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column (name="borrowID")
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "borrowID")
     private Integer borrowID;
-	
-	@Column (name="userID")
+
+    @Column(name = "userID")
     private Integer userID;
-	
-	@Column (name="serialNumber")
+
+    @Column(name = "serial_number")
     private String serialNumber;
-	
-	@Column (name="borrowDate")
+
+    @Column(name = "borrow_date")
     private Date startDate;
-	
-	@Column (name="dueDate")
+
+    @Column(name = "due_date")
     private Date endDate;
 
     public Borrow() {
+        this.startDate = Date.valueOf(LocalDate.now());
+        this.endDate = Date.valueOf(LocalDate.now().plusDays(7));
     }
 
     public Borrow(Integer borrowID, Integer userID, String serialNumber) {
         this.borrowID = borrowID;
         this.userID = userID;
         this.serialNumber = serialNumber;
+        this.startDate = Date.valueOf(LocalDate.now());
+        this.endDate = Date.valueOf(LocalDate.now().plusDays(7));
     }
 
     public Integer getBorrowID() {

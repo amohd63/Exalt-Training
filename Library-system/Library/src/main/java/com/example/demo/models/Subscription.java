@@ -1,6 +1,7 @@
 package com.example.demo.models;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,26 +14,28 @@ import javax.persistence.Table;
 @Table(name = "subscription")
 public class Subscription {
 	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column (name="subscriptionID")
     private Integer subscriptionID;
 	
 	@Column (name="userID")
     private Integer userID;
 	
-	@Column (name="startDate")
+	@Column (name="start_date")
     private Date startDate;
 	
-	@Column (name="endDate")
+	@Column (name="end_date")
     private Date endDate;
 
-    public Subscription(Integer subscriptionID, Integer userID, Date startDate, Date endDate) {
+    public Subscription(Integer subscriptionID, Integer userID, Date endDate) {
         this.subscriptionID = subscriptionID;
         this.userID = userID;
-        this.startDate = startDate;
+        this.startDate = Date.valueOf(LocalDate.now());
         this.endDate = endDate;
     }
     
     public Subscription() {
+        this.startDate = Date.valueOf(LocalDate.now());
     }
 
     public Integer getSubscriptionID() {
