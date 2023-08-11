@@ -73,6 +73,7 @@ public class Borrow {
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
+        this.endDate = Date.valueOf(LocalDate.now().plusDays(7));
     }
 
     public Date getEndDate() {

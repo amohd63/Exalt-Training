@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"userID\": 1,\r\n        \"endDate\": \"2023-12-31\"\r\n}",
+					"raw": "{\r\n        \"subscriptionID\": 1,\r\n        \"userID\": 1,\r\n        \"startDate\": \"2023-04-05\",\r\n        \"endDate\": \"2023-12-31\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -100,7 +100,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"userName\": \"user66\",\r\n        \"userPassword\": \"password5\",\r\n        \"firstName\": \"Alisda\",\r\n        \"lastName\": \"Mohammed\"\r\n}",
+					"raw": "{\r\n        \"userID\": 5,\r\n        \"userName\": \"user11\",\r\n        \"userPassword\": \"password5\",\r\n        \"firstName\": \"Alisda\",\r\n        \"lastName\": \"Mohammed\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -128,7 +128,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n        \"serialNumber\": \"SN398\",\r\n        \"name\": \"Test book\",\r\n        \"numOfPages\": 50,\r\n        \"genre\": \"NOVEL\",\r\n        \"author\": \"Test user\",\r\n        \"availableCopies\": 5,\r\n        \"totalCopies\": 10\r\n}",
+					"raw": "{\r\n        \"serialNumber\": \"SN323\",\r\n        \"name\": \"Test book\",\r\n        \"numOfPages\": 50,\r\n        \"genre\": \"NOVEL\",\r\n        \"author\": \"Test user\",\r\n        \"availableCopies\": 5,\r\n        \"totalCopies\": 10\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -155,7 +155,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8081/borrow/1/SN398",
+					"raw": "http://localhost:8081/borrow/3/SN789",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -163,8 +163,8 @@
 					"port": "8081",
 					"path": [
 						"borrow",
-						"1",
-						"SN398"
+						"3",
+						"SN789"
 					]
 				}
 			},
@@ -176,16 +176,64 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8081/borrow/1/SN398",
+					"raw": "http://localhost:8081/extend_borrow/3/SN789",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8081",
 					"path": [
-						"borrow",
-						"1",
-						"SN398"
+						"extend_borrow",
+						"3",
+						"SN789"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetBookBySerialNumber",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/book/SN123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"book",
+						"SN123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RenewSubscription",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"subscriptionID\": 1,\r\n        \"userID\": 1,\r\n        \"startDate\": \"2023-04-05\",\r\n        \"endDate\": \"2024-12-31\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/renew_subscription",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"renew_subscription"
 					]
 				}
 			},

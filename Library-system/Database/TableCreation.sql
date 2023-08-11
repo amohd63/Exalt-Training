@@ -40,3 +40,4 @@ CREATE TABLE Borrow (
     FOREIGN KEY (serial_number) REFERENCES Books(serial_number) ON DELETE CASCADE
 );
 ALTER TABLE Borrow AUTO_INCREMENT=1;
+SET FOREIGN_KEY_CHECKS=0; -- to disable them

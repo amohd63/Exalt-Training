@@ -32,7 +32,7 @@ FROM Books;
 SELECT *
 FROM borrow;
 
+SELECT EXISTS (SELECT 1 FROM Books B WHERE B.name = "Test book" and B.total_copies = 10);
+
 INSERT INTO users (user_name, user_password, first_name, last_name) 
 VALUES ('user5', 'password5', 'Ali', 'Mohammed');
-
-SET FOREIGN_KEY_CHECKS=0; -- to disable them

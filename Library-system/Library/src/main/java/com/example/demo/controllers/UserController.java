@@ -32,6 +32,11 @@ public class UserController {
         return service.subscribe(subscription);
     }
 
+    @PostMapping("/renew_subscription")
+    public String renewSubscription(@RequestBody Subscription subscription) {
+        return service.renewSubscription(subscription);
+    }
+
     @RequestMapping("/books")
     public List<Book> getLibraryBooks() {
         return service.getAllBooks();
@@ -66,5 +71,10 @@ public class UserController {
     @PostMapping("/extend_borrow/{userID}/{serialNumber}")
     public String extendBorrow(@PathVariable Integer userID, @PathVariable String serialNumber) {
         return service.extendBorrow(userID, serialNumber);
+    }
+
+    @RequestMapping("/book/{serialNumber}")
+    public List<Book> findBooks(@PathVariable String serialNumber) {
+        return service.findBooks(serialNumber);
     }
 }
