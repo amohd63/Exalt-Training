@@ -1,7 +1,7 @@
 
 # Online library service
 
-Online library service contains books and users, each user can subscribe to the library in order to borrow books. Each user can borrow two books every 7 days. The user can extend borrowing the book once. [The implementation of the system.]([https://www.github.com/Eyab0](https://github.com/amohd63/Exalt-Training/tree/master/Library-system/Library/src/main/java/com/example/demo))
+Online library service contains books and users, each user can subscribe to the library in order to borrow books. Each user can borrow two books every 7 days. The user can extend borrowing the book once. [The implementation of the system.](https://github.com/amohd63/Exalt-Training/tree/master/Library-system/Library/src/main/java/com/example/demo)
 
 
 ## Operations
