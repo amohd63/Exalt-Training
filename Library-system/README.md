@@ -12,4 +12,4 @@ Online library service contains books and users, each user can subscribe to the 
 
 ## ER Diagram
 
-![LibraryERD]([https://user-images.githubusercontent.com/61092637/195473532-dc6e429f-78a7-473b-b017-67699e0329e5.jpg](https://raw.githubusercontent.com/amohd63/Exalt-Training/master/Library-system/ERD.png))
+![LibraryERD](https://raw.githubusercontent.com/amohd63/Exalt-Training/master/Library-system/ERD.png)
