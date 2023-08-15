@@ -2,19 +2,14 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.Borrow;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.models.User;
@@ -23,58 +18,28 @@ import com.example.demo.models.Subscription;
 import com.example.demo.services.UserService;
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     UserService service;
 
-    @PostMapping("/subscribe")
-    public String subscribe(@RequestBody Subscription subscription) {
-        return service.subscribe(subscription);
-    }
-
-    @PostMapping("/renew_subscription")
-    public String renewSubscription(@RequestBody Subscription subscription) {
-        return service.renewSubscription(subscription);
-    }
-
-    @RequestMapping("/books")
-    public List<Book> getLibraryBooks() {
-        return service.getAllBooks();
-    }
-
-    @RequestMapping("/user_subscription/{userID}")
-    public Subscription getUserSubscription(@PathVariable Integer userID) {
-        return service.getUserSubscription(userID);
-    }
-
-    @RequestMapping("/borrow_history/{userID}")
-    public List<Borrow> getUserBorrowHistory(@PathVariable Integer userID) {
-        return service.getUserBorrowHistory(userID);
-    }
-
-    @PostMapping("/add_user")
+    @PostMapping
     public String addUser(@RequestBody User user) {
         return service.addUser(user);
     }
 
-    @PostMapping("/add_book")
-    public String addBook(@RequestBody Book book) {
-        return service.addBook(book);
+    @GetMapping(params = "userName")
+    public User getUser(@RequestParam String userName) {
+        return service.getUser(userName);
     }
 
-
-    @PostMapping("/borrow/{userID}/{serialNumber}")
-    public String borrowBook(@PathVariable Integer userID, @PathVariable String serialNumber) {
-        return service.borrowBook(userID, serialNumber);
+    @PutMapping
+    public User updateUser(@RequestBody User user) {
+        return service.updateUser(user);
     }
 
-    @PostMapping("/extend_borrow/{userID}/{serialNumber}")
-    public String extendBorrow(@PathVariable Integer userID, @PathVariable String serialNumber) {
-        return service.extendBorrow(userID, serialNumber);
-    }
-
-    @RequestMapping("/book/{serialNumber}")
-    public List<Book> findBooks(@PathVariable String serialNumber) {
-        return service.findBooks(serialNumber);
+    @DeleteMapping(params = "userName")
+    public int deleteUser(@RequestParam String userName) {
+        return service.deleteUser(userName);
     }
 }

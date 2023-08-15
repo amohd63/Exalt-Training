@@ -43,6 +43,13 @@ public class Borrow {
         this.endDate = Date.valueOf(LocalDate.now().plusDays(7));
     }
 
+    public Borrow(Integer userID, String serialNumber) {
+        this.userID = userID;
+        this.serialNumber = serialNumber;
+        this.startDate = Date.valueOf(LocalDate.now());
+        this.endDate = Date.valueOf(LocalDate.now().plusDays(7));
+    }
+
     public Integer getBorrowID() {
         return borrowID;
     }

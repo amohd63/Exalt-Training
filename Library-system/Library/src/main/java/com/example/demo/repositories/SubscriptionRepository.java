@@ -20,4 +20,6 @@ public interface SubscriptionRepository extends JpaRepository<Subscription, Inte
             value = "SELECT * FROM Subscription S WHERE S.userID = :userID",
             nativeQuery = true)
     Subscription findByUserID(@Param("userID") Integer userID);
+
+    int deleteSubscriptionByUserID(Integer userID);
 }
