@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, String> {
+
+    @Transactional
     Book findBookBySerialNumber(String serialNumber);
 
     @Transactional

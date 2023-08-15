@@ -7,9 +7,14 @@ import com.example.demo.models.User;
 import com.example.demo.services.BookService;
 import com.example.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/book")
@@ -28,8 +33,12 @@ public class BookController {
     }
 
     @GetMapping(params = "serialNumber")
-    public Book findBook(@RequestParam String serialNumber) {
-        return service.findBook(serialNumber);
+    public Resource<Book> findBook(@RequestParam String serialNumber) {
+        Book book = service.findBook(serialNumber);
+        Resource<Book> resource = new Resource<Book>(book);
+        ControllerLinkBuilder linkTo = linkTo(methodOn(this.getClass()).getLibraryBooks());
+        resource.add(linkTo.withRel("all-students"));
+        return resource;
     }
 
     @PutMapping

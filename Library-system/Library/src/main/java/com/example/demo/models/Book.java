@@ -1,10 +1,15 @@
 package com.example.demo.models;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "books")
-public class Book {
+public class Book{
     @Id
     @Column(name = "serial_number")
     private String serialNumber;
