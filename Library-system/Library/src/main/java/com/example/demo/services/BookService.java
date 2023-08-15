@@ -41,7 +41,11 @@ public class BookService {
     }
 
     public Book updateBook(Book book) {
-        return bookRepository.updateBook(book);
+        Book bookObj = bookRepository.findBookBySerialNumber(book.getSerialNumber());
+        if (bookObj == null){
+            return null;
+        }
+        return bookRepository.save(book);
     }
 
     public int deleteBook(String serialNumber) {

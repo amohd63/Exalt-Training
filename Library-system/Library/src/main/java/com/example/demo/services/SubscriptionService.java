@@ -24,9 +24,9 @@ public class SubscriptionService {
     SubscriptionRepository subscriptionRepository;
 
     public String subscribe(Subscription subscription) {
-        if (subscriptionRepository.existsByUserID(subscription.getUserID()).equals(new BigInteger(String.valueOf(1)))) {
-            Subscription userSubscription = subscriptionRepository.findByUserID(subscription.getUserID());
-            if (userSubscription.getEndDate().before(Date.valueOf(LocalDate.now()))){
+        if (subscriptionRepository.existsSubscriptionByUserID(subscription.getUserID())) {
+            Subscription userSubscription = subscriptionRepository.findSubscriptionByUserID(subscription.getUserID());
+            if (userSubscription.getEndDate().before(Date.valueOf(LocalDate.now()))) {
                 return "Your subscription ended, renew it!";
             }
             return "User already subscribed to the library.";
@@ -36,8 +36,8 @@ public class SubscriptionService {
     }
 
     public String renewSubscription(Subscription subscription) {
-        if (subscriptionRepository.existsByUserID(subscription.getUserID()).equals(new BigInteger(String.valueOf(1)))) {
-            Subscription userSubscription = subscriptionRepository.findByUserID(subscription.getUserID());
+        if (subscriptionRepository.existsSubscriptionByUserID(subscription.getUserID())) {
+            Subscription userSubscription = subscriptionRepository.findSubscriptionByUserID(subscription.getUserID());
             userSubscription.setStartDate(subscription.getStartDate());
             userSubscription.setEndDate(subscription.getEndDate());
             subscriptionRepository.saveAndFlush(userSubscription);
@@ -59,7 +59,7 @@ public class SubscriptionService {
                 .get();
     }
 
-    public int deleteSubscription(Integer userID){
+    public int deleteSubscription(Integer userID) {
         return subscriptionRepository.deleteSubscriptionByUserID(userID);
     }
 }

@@ -23,7 +23,12 @@ public class UserService {
     }
 
     public User updateUser(User user) {
-        return userRepository.updateUser(user);
+        User userObj = userRepository.findUserByUserName(user.getUserName());
+        if (userObj == null){
+            return null;
+        }
+        user.setUserID(userObj.getUserID());
+        return userRepository.save(user);
     }
 
     public int deleteUser(String userName) {

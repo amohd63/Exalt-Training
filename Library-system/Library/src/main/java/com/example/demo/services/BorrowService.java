@@ -28,7 +28,11 @@ public class BorrowService {
                 .collect(Collectors.toList());
     }
 
+    //handle if the user have two active books
     public String borrowBook(Integer userID, String serialNumber) {
+        if (borrowRepository.findBorrowByUserIDAndEndDateGreaterThanEqual(userID, Date.valueOf(LocalDate.now())).size() > 2) {
+            return "You can borrow up to 2 books only.";
+        }
         if (borrowRepository.existsBorrowByUserIDAndSerialNumber(userID, serialNumber)) {
             Borrow borrow = borrowRepository.findBorrowByUserIDAndSerialNumber(userID, serialNumber);
             if (borrow.getEndDate().after(Date.valueOf(LocalDate.now()))) {

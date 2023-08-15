@@ -11,15 +11,9 @@ import java.math.BigInteger;
 
 @Repository
 public interface SubscriptionRepository extends JpaRepository<Subscription, Integer> {
-    @Query(
-            value = "SELECT EXISTS (SELECT 1 FROM Subscription S WHERE S.userID = :userID)",
-            nativeQuery = true)
-    BigInteger existsByUserID(@Param("userID") Integer userID);
+    boolean existsSubscriptionByUserID(Integer userID);
 
-    @Query(
-            value = "SELECT * FROM Subscription S WHERE S.userID = :userID",
-            nativeQuery = true)
-    Subscription findByUserID(@Param("userID") Integer userID);
+    Subscription findSubscriptionByUserID(Integer userID);
 
     int deleteSubscriptionByUserID(Integer userID);
 }

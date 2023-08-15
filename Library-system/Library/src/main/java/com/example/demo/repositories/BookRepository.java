@@ -8,12 +8,12 @@ import com.example.demo.models.User;
 import com.example.demo.models.Book;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, String> {
     Book findBookBySerialNumber(String serialNumber);
 
-    Book updateBook(Book book);
-
+    @Transactional
     int deleteBookBySerialNumber(String serialNumber);
 }
