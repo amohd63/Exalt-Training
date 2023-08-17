@@ -1,14 +1,9 @@
 package com.example.demo.models;
 
+import javax.persistence.*;
 import java.sql.Date;
 import java.time.LocalDate;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.Objects;
 
 @Entity
 @Table(name = "borrow")
@@ -33,6 +28,14 @@ public class Borrow {
     public Borrow() {
         this.startDate = Date.valueOf(LocalDate.now());
         this.endDate = Date.valueOf(LocalDate.now().plusDays(7));
+    }
+
+    public Borrow(Integer borrowID, Integer userID, String serialNumber, Date startDate, Date endDate) {
+        this.borrowID = borrowID;
+        this.userID = userID;
+        this.serialNumber = serialNumber;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public Borrow(Integer borrowID, Integer userID, String serialNumber) {
@@ -89,5 +92,24 @@ public class Borrow {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Borrow borrow = (Borrow) o;
+        return Objects.equals(borrowID, borrow.borrowID) && Objects.equals(userID, borrow.userID) && Objects.equals(serialNumber, borrow.serialNumber) && Objects.equals(startDate, borrow.startDate) && Objects.equals(endDate, borrow.endDate);
+    }
+
+    @Override
+    public String toString() {
+        return "Borrow{" +
+                "borrowID=" + borrowID +
+                ", userID=" + userID +
+                ", serialNumber='" + serialNumber + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                '}';
     }
 }

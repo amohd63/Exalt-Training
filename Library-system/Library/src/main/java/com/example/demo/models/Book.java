@@ -6,6 +6,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Objects;
 
 @Entity
 @Table(name = "books")
@@ -35,7 +36,7 @@ public class Book{
 
     public Book() {
         super();
-// TODO Auto-generated constructor stub	
+// TODO Auto-generated constructor stub
     }
 
     public Book(String serialNumber, String name, int numOfPages, String genre, String author, int availableCopies, int totalCopies) {
@@ -105,4 +106,24 @@ public class Book{
         this.totalCopies = totalCopies;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return numOfPages == book.numOfPages && availableCopies == book.availableCopies && totalCopies == book.totalCopies && Objects.equals(serialNumber, book.serialNumber) && Objects.equals(name, book.name) && genre == book.genre && Objects.equals(author, book.author);
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "serialNumber='" + serialNumber + '\'' +
+                ", name='" + name + '\'' +
+                ", numOfPages=" + numOfPages +
+                ", genre=" + genre +
+                ", author='" + author + '\'' +
+                ", availableCopies=" + availableCopies +
+                ", totalCopies=" + totalCopies +
+                '}';
+    }
 }

@@ -5,11 +5,9 @@ import com.example.demo.repositories.BorrowRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigInteger;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class BorrowService {
@@ -17,15 +15,7 @@ public class BorrowService {
     BorrowRepository borrowRepository;
 
     public List<Borrow> getUserBorrowHistory(Integer userID) {
-        List<Borrow> borrowList = borrowRepository.findAll();
-
-        if (borrowList == null || borrowList.isEmpty()) {
-            return null;
-        }
-
-        return borrowList.stream()
-                .filter(borrow -> borrow.getUserID().equals(userID))
-                .collect(Collectors.toList());
+        return borrowRepository.findBorrowByUserID(userID);
     }
 
     //handle if the user have two active books

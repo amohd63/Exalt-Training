@@ -1,6 +1,7 @@
 package com.example.demo.models;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "users")
@@ -74,6 +75,14 @@ public class User {
 
     public void setUserPassword(String password) {
         this.userPassword = password;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(userID, user.userID) && Objects.equals(userName, user.userName) && Objects.equals(userPassword, user.userPassword) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName);
     }
 
     @Override

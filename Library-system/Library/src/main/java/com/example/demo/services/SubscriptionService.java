@@ -47,16 +47,7 @@ public class SubscriptionService {
     }
 
     public Subscription getUserSubscription(Integer userID) {
-        List<Subscription> subscriptionList = subscriptionRepository.findAll();
-
-        if (subscriptionList == null || subscriptionList.isEmpty()) {
-            return null;
-        }
-
-        return subscriptionList.stream()
-                .filter(subscription -> subscription.getUserID().equals(userID))
-                .findFirst()
-                .get();
+        return subscriptionRepository.findSubscriptionByUserID(userID);
     }
 
     public int deleteSubscription(Integer userID) {

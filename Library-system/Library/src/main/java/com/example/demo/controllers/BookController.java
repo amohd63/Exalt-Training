@@ -9,6 +9,7 @@ import com.example.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,9 +21,13 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 @RequestMapping("/book")
 public class BookController {
     @Autowired
-    BookService service;
+    public BookService service;
+
+    public BookController() {
+    }
 
     @GetMapping
+//    @ResponseStatus(HttpStatus.OK)
     public List<Book> getLibraryBooks() {
         return service.getAllBooks();
     }

@@ -1,31 +1,33 @@
 package com.example.demo.models;
 
+import javax.persistence.*;
 import java.sql.Date;
 import java.time.LocalDate;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.Objects;
 
 @Entity
 @Table(name = "subscription")
 public class Subscription {
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	@Column (name="subscriptionID")
+    @Column(name = "subscriptionID")
     private Integer subscriptionID;
-	
-	@Column (name="userID")
+
+    @Column(name = "userID")
     private Integer userID;
-	
-	@Column (name="start_date")
+
+    @Column(name = "start_date")
     private Date startDate;
-	
-	@Column (name="end_date")
+
+    @Column(name = "end_date")
     private Date endDate;
+
+    public Subscription(Integer subscriptionID, Integer userID, Date startDate, Date endDate) {
+        this.subscriptionID = subscriptionID;
+        this.userID = userID;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
 
     public Subscription(Integer subscriptionID, Integer userID, Date endDate) {
         this.subscriptionID = subscriptionID;
@@ -33,7 +35,7 @@ public class Subscription {
         this.startDate = Date.valueOf(LocalDate.now());
         this.endDate = endDate;
     }
-    
+
     public Subscription() {
         this.startDate = Date.valueOf(LocalDate.now());
     }
@@ -68,5 +70,23 @@ public class Subscription {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Subscription that = (Subscription) o;
+        return Objects.equals(subscriptionID, that.subscriptionID) && Objects.equals(userID, that.userID) && Objects.equals(startDate, that.startDate) && Objects.equals(endDate, that.endDate);
+    }
+
+    @Override
+    public String toString() {
+        return "Subscription{" +
+                "subscriptionID=" + subscriptionID +
+                ", userID=" + userID +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                '}';
     }
 }
